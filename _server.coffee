@@ -87,7 +87,7 @@ if is_build
   requirejs.optimize config, (buildResponse) ->
     # Done
     console.log "Optimization complete!"
-    console.log "ThreeNodes.js has successfuly been compiled to /output_static !"
+    console.log "next-boilerplate.js has successfuly been compiled to /output_static !"
     process.exit()
 
 else
