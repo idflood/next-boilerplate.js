@@ -13,6 +13,10 @@ jade = require("jade")
 nib = require("nib")
 requirejs = require('requirejs')
 
+# Dirname to point to the project root
+# @see: server.js
+__dirname = global.basePath
+
 # Utility functions
 delay = (ms, func) -> setTimeout func, ms
 exec_and_log = (command, on_complete = null) ->

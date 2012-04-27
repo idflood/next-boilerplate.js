@@ -11,6 +11,11 @@ jade = require("jade")
 wrench = require("wrench")
 requirejs = require('requirejs')
 
+# Dirname to point to the project root
+# @see: server.js
+__dirname = global.basePath
+
+# Utility functions
 delay = (ms, func) -> setTimeout func, ms
 exec_and_log = (command, on_complete = null) ->
   console.log "executing command: " + command
