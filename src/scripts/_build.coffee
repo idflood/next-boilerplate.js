@@ -1,17 +1,17 @@
 # Require node modules
 sys = require("util")
 fs = require("fs")
-spawn = require("child_process").spawn
 path = require("path")
 url = require("url")
 exec = require("child_process").exec
 watch = require("watch")
-coffee = require("coffee-script")
 jade = require("jade")
 wrench = require("wrench")
 requirejs = require('requirejs')
 
-# Dirname to point to the project root
+node_define = global.define
+
+# Point __dirname to the project root
 # @see: server.js
 __dirname = global.basePath
 
@@ -75,10 +75,12 @@ config =
   baseUrl: 'src/scripts/'
   mainConfigFile: 'src/scripts/require-config.js'
   optimize: 'none'
-  name: 'boot'
-  out: 'output_static/scripts/boot.js'
   pragmasOnSave:
     excludeCoffeeScript: true
+  name: 'boot'
+  out: 'output_static/scripts/boot.js'
+
+requirejs.config({ nodeRequire: require })
 
 requirejs.optimize config, (buildResponse) ->
   # Done
