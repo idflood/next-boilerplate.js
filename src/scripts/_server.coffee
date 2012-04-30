@@ -101,3 +101,17 @@ console.log "http://localhost:#{port}/test"
 console.log ""
 console.log "Main url:"
 console.log "http://localhost:#{port}/"
+console.log ""
+console.log "###################################################"
+
+if process.argv[2] == "test"
+  # Run continuous tests if "node server.js test"
+  runTests = () -> exec_and_log "node ./src/scripts/testrunner.js"
+  
+  test_if_change = (f, curr, prev) ->
+    # Skip testrunner.js changes to avoid infinite compilation
+    if !f || f == "src/scripts/testrunner.js" then return
+    if typeof f != "object" && prev != null && curr != null then runTests()
+  watch.watchTree("src/scripts", {'ignoreDotFiles': true}, test_if_change)
+  
+  runTests()

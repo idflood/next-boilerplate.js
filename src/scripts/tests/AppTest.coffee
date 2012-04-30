@@ -11,3 +11,9 @@ define [
     
     equals app.add(1, 2), 3, "1 + 2 = 3"
     equals app.add(8, -2), 6, "8 + (-2) = 6"
+
+  test "App.sub", () ->
+    app = new Next.App()
+    
+    # Doesn't exists
+    #equals app.sub(7, 2), 5, "7 - 2 = 5"
