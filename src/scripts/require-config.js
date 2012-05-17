@@ -7,6 +7,7 @@ require.config({
     use: "libs/require/use",
     text: "libs/require/text",
     order: "libs/require/order",
+    "socket.io": "libs/socket.io/socket.io",
     cs: "libs/require/cs",
     CoffeeScript: "libs/coffee-script"
   },

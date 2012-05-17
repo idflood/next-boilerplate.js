@@ -13,6 +13,9 @@ jade = require("jade")
 nib = require("nib")
 requirejs = require('requirejs')
 
+io = require('socket.io')
+main_socket = false
+
 # Dirname to point to the project root
 # @see: server.js
 __dirname = global.basePath
@@ -29,6 +32,7 @@ exec_and_log = (command, on_complete = null) ->
 
 # Setup express server
 app = express.createServer()
+io = io.listen(app)
 port = process.env.PORT || 3000
 app.use app.router
 app.use express.methodOverride()
@@ -92,15 +96,31 @@ app.get "/test", (req, res) ->
 
 # Start the server
 app.listen port
+
+# Live reload
+send_socket_refresh = () ->
+  if main_socket
+    console.log "emit refresh event!"
+    main_socket.emit("reload")
+
+io.sockets.on 'connection', (socket) ->
+  main_socket = socket
+
+watch.watchTree("src/scripts", {'ignoreDotFiles': true}, send_socket_refresh)
+
+
 console.log "###################################################"
 console.log ""
-console.log "Ready!"
+console.log "Server ready!"
 console.log ""
 console.log "Tests available at:"
 console.log "http://localhost:#{port}/test"
 console.log ""
 console.log "Main url:"
 console.log "http://localhost:#{port}/"
+console.log ""
+console.log "Live coding (automatically reload on file save):"
+console.log "http://localhost:#{port}/?dev=true"
 console.log ""
 console.log "###################################################"
 
