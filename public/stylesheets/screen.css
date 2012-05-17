@@ -116,10 +116,13 @@ body {
 }
 body {
   background: #efefef;
-  padding: 2em;
+  padding: 0;
+  margin: 0;
 }
 header,
 footer {
   font-size: 11px;
   margin: 20px 0;
+  display: none;
+  visibility: hidden;
 }
