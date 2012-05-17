@@ -2,6 +2,8 @@
 1. git clone git://github.com/idflood/next-boilerplate.js.git
 2. cd next-boilerplate.js
 3. npm install -d
+4. git submodule init
+5. git submodule update
 
 ## Usage
 1. cd next-boilerplate.js
