@@ -8,7 +8,6 @@ define [
       constructor: () ->
         if @getURLParameter("dev") == "true"
           console.log "AutoReload init"
-        
           socket = io.connect('http://localhost')
           socket.on 'reload', () ->
             console.log "reload!"

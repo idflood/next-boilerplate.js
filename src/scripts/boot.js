@@ -2,12 +2,11 @@
 // @see: require-config.js
 require.config({
   paths: {
-    order: "libs/require/order",
     CoffeeScript: "libs/coffee-script",
     cs: "libs/require/cs"
   }
 });
 
-require(['order!require-config', 'order!cs!core/App'], function () {
+require(['cs!core/App'], function () {
   new Next.App();
 });
