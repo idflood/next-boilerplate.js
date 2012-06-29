@@ -1,6 +1,6 @@
 define [
-  'use!Underscore',
-  'use!Backbone',
+  'Underscore',
+  'Backbone',
   'jquery',
   'libs/namespace',
   'cs!core/utils/ThreeApp',

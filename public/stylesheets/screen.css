@@ -108,6 +108,17 @@ summary {
   outline: 0;
   display: block;
 }
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]),
+[hidden] {
+  display: none;
+}
 body {
   font-size: 12px;
   font-family: Helvetica, sans-serif;
